@@ -1,42 +1,76 @@
-<!DOCTYPE html>
+{% load static %}
 <html>
 <head>
-    <title>Contact Us - Best Cars</title>
-    <link rel="stylesheet" href="/static/style.css">
-    <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <!-- Link the style sheet here -->
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
 </head>
+<div>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
+    <div class="container-fluid">
+      <h2 style="padding-right: 5%;">Dealerships</h2>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" style="font-size: larger;" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" style="font-size: larger;" href="/about">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="font-size: larger;" href="/contact">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+    <div class="card" style="width: 80%;margin: auto; margin-top:5%;">
+      <div class="banner" name="about-header">
+      <!-- Insert header information here -->
+        <h1>About Us</h1>
+        Welcome to Best Cars dealership, home to the best cars in South Africa. We deal in selling domestic and imported cars at reasonable prices.
+      </div>
+      <div style="display: flex;flex-direction: row; margin:auto">
+      <div class="card" style="width: 30%;">
+        <img class="card-img-top" src="{% static 'zuma.jpg' %}" alt="Zuma">
+        <div class="card-body">
+          <p class="title">Zuma Mthembu</p>
+          <p>CEO</p>
+          <p class="card-text">Zuma Mthembu is the CEO of the dealership, bringing over 15 years of experience in the automotive industry. 
+            He is committed to delivering exceptional customer service and driving the company’s growth through innovation and strong leadership.</p>
+          <p>Email: Zmthembu@gmail.com</p>
+        </div>
+      </div>
 
-<body>
+      <div class="card" style="width: 30%;">
+        <img class="card-img-top" src="{% static 'lerato.png' %}" alt="Lerato">
+        <div class="card-body">
+          <p class="title">Lerato Nkosi</p>
+          <p>Sales Manager</p>
+          <p class="card-text">Lerato Nkosi leads the sales team with a customer-focused approach and extensive knowledge of new and pre-owned vehicles. 
+            She is dedicated to helping clients find the right car while ensuring a smooth and enjoyable buying experience.</p>
+          <p>Email: Lnkosi@gmail.com</p>
+        </div>
+      </div>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="/">Best Cars</a>
-  <div class="navbar-nav">
-    <a class="nav-link" href="/">Home</a>
-    <a class="nav-link" href="/about/">About</a>
-    <a class="nav-link active" href="/contact/">Contact</a>
-  </div>
-</nav>
-
-<div class="container mt-5">
-    <h1>Contact Us</h1>
-    <p>We would love to hear from you!</p>
-
-    <hr>
-
-    <h4>📍 Address</h4>
-    <p>123 Auto Drive, Toronto, ON, Canada</p>
-
-    <h4>📞 Phone</h4>
-    <p>+1 (800) 123-4567</p>
-
-    <h4>📧 Email</h4>
-    <p>support@bestcars.com</p>
-
-    <h4>🕒 Business Hours</h4>
-    <p>Monday – Friday: 9:00 AM – 6:00 PM</p>
-    <p>Saturday: 10:00 AM – 4:00 PM</p>
-    <p>Sunday: Closed</p>
+      <div class="card" style="width: 30%;">
+        <img class="card-img-top" src="{% static 'thabo.jpg' %}" alt="Thabo">
+        <div class="card-body">
+          <p class="title">Thabo Dlamini</p>
+          <p>Service & Operations Manager</p>
+          <p class="card-text">Thabo Dlamini manages the dealership’s service center and daily operations. 
+            With his strong technical expertise, he ensures every vehicle meets high standards of quality, safety, and reliability.</p>
+          <p>Email: Tdlamini@gmail.com</p>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    
 </div>
 
-</body>
 </html>
