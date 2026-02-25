@@ -21,9 +21,7 @@ const Register = () => {
     let register_url = window.location.origin + "/djangoapp/register";
     const res = await fetch(register_url, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         "userName": userName,
         "password": password,
@@ -47,9 +45,7 @@ const Register = () => {
       <div className="header" style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
         <span className="text" style={{flexGrow: "1"}}>SignUp</span>
         <div style={{display: "flex", flexDirection: "row", justifySelf: "end", alignSelf: "start"}}>
-          <a href="/" onClick={() => {gohome()}} style={{justifyContent: "space-between", alignItems: "flex-end"}}>
-            <img style={{width: "1cm"}} src={close_icon} alt="X"/>
-          </a>
+          <a href="/" onClick={() => {gohome()}}><img style={{width: "1cm"}} src={close_icon} alt="X"/></a>
         </div>
       </div>
       <form onSubmit={register}>
