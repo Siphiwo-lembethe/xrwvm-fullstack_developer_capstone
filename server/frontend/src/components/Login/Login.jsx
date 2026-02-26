@@ -1,74 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import "./Login.css";
-import Header from '../Header/Header';
-
-const Login = ({ onClose }) => {
-
+const LoginPanel = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [open,setOpen] = useState(true)
-
-  let login_url = window.location.origin+"/djangoapp/login";
 
   const login = async (e) => {
     e.preventDefault();
-
-    const res = await fetch(login_url, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            "userName": userName,
-            "password": password
-        }),
+    const res = await fetch(window.location.origin + "/djangoapp/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userName, password }),
     });
-    
     const json = await res.json();
-    if (json.status != null && json.status === "Authenticated") {
-        sessionStorage.setItem('username', json.userName);
-        setOpen(false);        
+    if (json.status === "Authenticated") {
+      sessionStorage.setItem("username", json.userName);
+      window.location.href = window.location.origin;
+    } else {
+      alert("Invalid credentials");
     }
-    else {
-      alert("The user could not be authenticated.")
-    }
-};
-
-  if (!open) {
-    window.location.href = "/";
   };
-  
 
   return (
-    <div>
-      <Header/>
-    <div onClick={onClose}>
-      <div
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
-        className='modalContainer'
-      >
-          <form className="login_panel" style={{}} onSubmit={login}>
-              <div>
-              <span className="input_field">Username </span>
-              <input type="text"  name="username" placeholder="Username" className="input_field" onChange={(e) => setUserName(e.target.value)}/>
-              </div>
-              <div>
-              <span className="input_field">Password </span>
-              <input name="psw" type="password"  placeholder="Password" className="input_field" onChange={(e) => setPassword(e.target.value)}/>            
-              </div>
-              <div>
-              <input className="action_button" type="submit" value="Login"/>
-              <input className="action_button" type="button" value="Cancel" onClick={()=>setOpen(false)}/>
-              </div>
-              <a className="loginlink" href="/register">Register Now</a>
-          </form>
+    <div style={{ display: "flex", justifyContent: "center", marginTop: "100px" }}>
+      <div style={{ width: "400px", padding: "40px", border: "1px solid #ccc", borderRadius: "8px" }}>
+        <h2>Login</h2>
+        <form onSubmit={login}>
+          <div style={{ marginBottom: "15px" }}>
+            <input type="text" placeholder="Username" style={{ width: "100%", padding: "10px" }}
+              onChange={(e) => setUserName(e.target.value)} />
+          </div>
+          <div style={{ marginBottom: "15px" }}>
+            <input type="password" placeholder="Password" style={{ width: "100%", padding: "10px" }}
+              onChange={(e) => setPassword(e.target.value)} />
+          </div>
+          <input type="submit" value="Login" style={{ width: "100%", padding: "10px", backgroundColor: "darkturquoise", border: "none", cursor: "pointer" }} />
+        </form>
+        <p style={{ marginTop: "15px" }}>Don't have an account? <a href="/register">Register</a></p>
       </div>
-    </div>
     </div>
   );
 };
 
-export default Login;
+export default LoginPanel;
