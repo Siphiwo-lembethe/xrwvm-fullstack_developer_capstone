@@ -1,7 +1,6 @@
-import React from 'react';
+import React from "react";
 import "../assets/style.css";
 import "../assets/bootstrap.min.css";
-
 const Header = () => {
     const logout = async (e) => {
     e.preventDefault();
@@ -9,11 +8,10 @@ const Header = () => {
     const res = await fetch(logout_url, {
       method: "GET",
     });
-  
     const json = await res.json();
     if (json) {
-      let username = sessionStorage.getItem('username');
-      sessionStorage.removeItem('username');
+      let username = sessionStorage.getItem("username");
+      sessionStorage.removeItem("username");
       window.location.href = window.location.origin;
       window.location.reload();
       alert("Logging out "+username+"...")
@@ -22,17 +20,14 @@ const Header = () => {
       alert("The user could not be logged out.")
     }
   };
-    
-//The default home page items are the login details panel
-let home_page_items =  <div></div>
-
-//Gets the username in the current session
-let curr_user = sessionStorage.getItem('username')
-
-//If the user is logged in, show the username and logout option on home page
+let home_page_items = <div className="input_panel">
+    <a className="nav_item" href="/login">Login</a>
+    <a className="nav_item" href="/register">Register</a>
+  </div>
+let curr_user = sessionStorage.getItem("username")
 if ( curr_user !== null &&  curr_user !== "") {
     home_page_items = <div className="input_panel">
-      <text className='username'>{sessionStorage.getItem("username")}</text>
+      <text className="username">{sessionStorage.getItem("username")}</text>
     <a className="nav_item" href="/djangoapp/logout" onClick={logout}>Logout</a>
   </div>
 }
@@ -67,5 +62,4 @@ if ( curr_user !== null &&  curr_user !== "") {
         </div>
     )
 }
-
 export default Header
